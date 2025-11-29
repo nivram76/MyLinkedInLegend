@@ -1,7 +1,8 @@
 # MyLinkedInLegend
 
-MyLinkedInLegend is a serverless LinkedIn SEO Optimization and Auto-Posting platform designed to help users improve their content performance, automate posting schedules, and streamline professional branding.  
-The platform provides AI-assisted post creation, template management, LinkedIn OAuth integration, and a scalable AWS backend built for reliability and growth.
+MyLinkedInLegend is a LinkedIn SEO optimization and content automation tool designed to help users stay consistent, grow their presence, and save time.
+It streamlines the entire posting process by offering AI-assisted content creation, reusable templates, and automatic scheduling.
+Whether you're sharing career updates, building your personal brand, or posting regularly for work, MyLinkedInLegend helps you create better content and stay active on LinkedIn with less effort.
 
 ---
 
