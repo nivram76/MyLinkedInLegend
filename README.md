@@ -1,252 +1,80 @@
-MyLinkedInLegend — Project Overview (Updated)
-Project Summary
+# MyLinkedInLegend
 
-MyLinkedInLegend is a cloud native, serverless LinkedIn Auto-Poster and SEO Optimization platform.
-Users can connect their LinkedIn accounts, generate posts using AI, create custom templates, and schedule posts to publish automatically.
-Everything is deployed entirely on AWS using a scalable, secure serverless architecture.
+MyLinkedInLegend is a serverless LinkedIn SEO Optimization and Auto-Posting platform designed to help users improve their content performance, automate posting schedules, and streamline professional branding.  
+The platform provides AI-assisted post creation, template management, LinkedIn OAuth integration, and a scalable AWS backend built for reliability and growth.
 
-Architecture Overview
-Frontend
+---
 
-Next.js (React) with TypeScript
+## Project Overview
 
-Hosted on S3 + CloudFront
+MyLinkedInLegend enables users to:
 
-Provides:
+- Connect their LinkedIn accounts securely using OAuth 2.0
+- Create and manage reusable post templates
+- Generate high-quality post content with AI assistance
+- Schedule posts to be published automatically
+- Maintain optimal posting frequency and SEO-friendly structure
 
-Login/signup page
+The goal is to simplify LinkedIn content strategy through automation, personalization, and intelligent optimization tools.
 
-LinkedIn connect flow
+---
 
-Dashboard
+## Features
 
-Template creation UI
+### Automated LinkedIn Posting
 
-AI post generator
+Allows users to schedule posts that will automatically publish through the LinkedIn UGC API.
 
-Schedule editor/list
+### AI-Assisted Post Creation
 
-Backend
+Generates LinkedIn-ready content based on templates, tone settings, and user prompts.
 
-Python 3.11 AWS Lambda functions
+### Template Management
 
-Deployed using AWS CDK
+Supports creation, editing, and storage of reusable post templates with customizable parameters.
 
-Contains logic for:
+### LinkedIn OAuth Integration
 
-Token handling
+Provides secure account connection and automatic token refresh handling.
 
-LinkedIn OAuth 2.0
+### Serverless Architecture
 
-AI post generation
+Built entirely on AWS using Lambdas, DynamoDB, API Gateway, and Cognito for scalable and low-maintenance operation.
 
-Template management
+---
 
-Post scheduling
+## Tech Stack
 
-DynamoDB CRUD
+### Frontend
 
-Publishing to LinkedIn UGC API
+- Next.js (TypeScript)
+- Designed for S3 + CloudFront hosting
+- Includes the dashboard, template editor, scheduler, and AI generation UI
 
-Authentication
+### Backend
 
-Cognito User Pool (email + password)
+- Python 3.11 AWS Lambda functions
+- AWS CDK for infrastructure-as-code
+- Handles LinkedIn authentication, AI generation, template CRUD, and scheduled publishing logic
 
-JWT auth for API Gateway
+### Authentication
 
-OAuth redirect flow for LinkedIn access tokens
+- Amazon Cognito User Pool
+- Email and password login
+- JWT-secured API access
 
-Database (DynamoDB)
+### Database (DynamoDB)
 
-Three core tables:
+Tables include:
 
-1. Users
+- Users
+- LinkedInTokens
+- Templates
+- ScheduledPosts
 
-Stores user profile + Cognito linkage.
+### Secrets Management
 
-2. LinkedInTokens
+Sensitive values stored securely in AWS SSM Parameter Store:
 
-Stores:
-
-LinkedIn access token
-
-Refresh token
-
-Token expiration
-
-User ID reference
-
-3. ScheduledPosts
-
-Includes:
-
-User ID
-
-Scheduled datetime
-
-Template ID or raw content
-
-Whether AI is required
-
-Status (pending, completed, failed)
-
-4. Templates (New)
-
-Template ID
-
-User ID
-
-Template text
-
-Tags / category
-
-AI-generation parameters (tone, style, etc)
-
-Secrets
-
-SSM Parameter Store:
-
-LinkedIn Client Secret
-
-AI Provider API Keys (OpenAI or Anthropic)
-
-Infrastructure
-
-AWS CDK (Python)
-
-Resources:
-
-Lambda functions (backend logic)
-
-API Gateway REST API
-
-Cognito User Pool
-
-DynamoDB tables
-
-S3 + CloudFront frontend hosting
-
-IAM roles / permissions
-
-CloudWatch EventBridge scheduled jobs
-
-Development Phases
-Phase 1 — Backend Skeleton
-
-Build CDK project
-
-Create a test Lambda + API Gateway endpoint
-
-Deploy and confirm environment works
-
-Phase 2 — Cognito Authentication
-
-User Pool + App Client
-
-Hosted UI for testing
-
-JWT-protected API routes
-
-Phase 3 — DynamoDB Core Tables
-
-Users table
-
-LinkedInTokens
-
-Templates
-
-ScheduledPosts
-
-Phase 4 — LinkedIn OAuth Integration
-
-Redirect handler Lambda
-
-Exchange authorization code for tokens
-
-Store tokens in DynamoDB
-
-Implement token refresh workflow
-
-Frontend “Connect LinkedIn” button and screen
-
-Phase 5 — Posting System (LinkedIn UGC API)
-
-Lambda to publish posts
-
-CRUD for scheduled posts
-
-AWS EventBridge Scheduler for delayed posting
-
-Post status tracking in DynamoDB
-
-Frontend UI for creating and editing schedules
-
-Phase 6 — AI Integration (Major Feature)
-Includes:
-
-AI post generator (OpenAI or Anthropic Lambda)
-
-Template storage + editing
-
-Prompt engineering for styles (professional, casual, storytelling, SEO, etc)
-
-Automatic post creation using:
-
-user’s template
-
-user’s custom instructions
-
-AI model personalization
-
-Scheduled posting with AI:
-
-At the schedule time, EventBridge triggers Lambda
-
-Lambda:
-
-Loads the selected template
-
-Calls AI API to generate final post
-
-Publishes the post to LinkedIn
-
-Logs status back to DynamoDB
-
-Phase 7 — Frontend Application (Full UI)
-
-Dashboard
-
-Template editor
-
-AI generator screen
-
-Scheduled posts calendar
-
-LinkedIn connection status
-
-Profile settings
-
-Phase 8 — SEO/Analytics
-
-AI rewriting tool
-
-Keyword/advice engine
-
-Engagement estimator
-
-Post performance tracking
-
-Purpose of This Document
-
-This file is the long-term architectural and functional blueprint for MyLinkedInLegend.
-Every future feature must match the phases and design principles here.
-
-Next Steps
-
-Finish WSL development environment
-
-Install Node.js, npm, Python 3.11, pip, AWS CLI, and CDK
-
-Begin Phase 1: Initialize CDK Python project
-
-Deploy test Lambda + API Gateway
+- LinkedIn credentials
+- AI provider API keys
