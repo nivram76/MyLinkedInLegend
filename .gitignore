@@ -8,6 +8,8 @@ aws/
 **/.venv
 **/__pycache__/
 
+*.zip
+
 # Node
 frontend/node_modules
 frontend/.next
