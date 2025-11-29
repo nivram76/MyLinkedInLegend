@@ -1,0 +1,21 @@
+# AWS credentials
+*.pem
+*.key
+*.env
+**/.env
+aws/
+**/cdk.out
+**/.venv
+**/__pycache__/
+
+# Node
+frontend/node_modules
+frontend/.next
+
+# Python
+**/*.pyc
+
+# IDE
+.vscode/
+.DS_Store
+
